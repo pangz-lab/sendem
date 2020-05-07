@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sendem/app/views/main_screen.dart';
 import 'package:sendem/app/views/file_upload_setting_screen.dart';
+import 'package:sendem/app/views/upload_completed_screen.dart';
 
 void main() {
   runApp(new MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: const Color(0xFF2196f3),
-        scaffoldBackgroundColor: Colors.blue[50],
+        accentColor: const Color(0xfffb7426),
+        scaffoldBackgroundColor: Colors.white,
         canvasColor: const Color(0xFF2196f3),
         textTheme: TextTheme(
           body1: TextStyle(
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
         ),
         appBarTheme: AppBarTheme(
           elevation: 0.0,
-          color: Colors.blue[50],
+          color: Colors.white,
           iconTheme: IconThemeData(
             color: Colors.blue,
           ),
@@ -48,8 +50,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder> {
         '/': (BuildContext context) => MainScreen(),
-        '/file_upload_setting': (BuildContext context) => FileUploadScreen(),
-        '/download': (BuildContext context) => MainScreen(),
+        '/file_upload_setting': (BuildContext context) => FileUploadSettingScreen(),
+        '/upload_completed_screen': (BuildContext context) => UploadCompletedScreen(),
         '/history': (BuildContext context) => MainScreen(),
         '/setting': (BuildContext context) => MainScreen(),
       }

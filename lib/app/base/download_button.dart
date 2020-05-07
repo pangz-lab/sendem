@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:sendem/app/components/button_type_long.dart';
 
 class DownloadButton extends StatelessWidget {
-  const DownloadButton({Key key}) : super(key: key);
+  final String title;
+  final Function onPressed;
+  const DownloadButton({
+    Key key,
+    this.onPressed,
+    this.title = "Download"
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +17,10 @@ class DownloadButton extends StatelessWidget {
         children: <Widget>[
           const Icon(Icons.file_download),
           Spacer(flex: 1),
-          const Text('Download'),
+          Text(this.title),
         ],
       ),
-      onPressed: () {
-        print("Download is clicked");
-      },
+      onPressed: this.onPressed,
     );
   }
 }

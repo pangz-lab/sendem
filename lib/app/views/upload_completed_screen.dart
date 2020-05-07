@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sendem/app/base/upload_button.dart';
-import 'package:sendem/app/base/file_upload_setting_form.dart';
+import 'package:sendem/app/base/goto_button.dart';
+import 'package:sendem/app/base/home_button.dart';
 import 'package:sendem/app/components/container_main_view.dart';
 import 'package:sendem/app/controllers/screen_navigator.dart';
 
-class FileUploadSettingScreen extends StatelessWidget {
+class UploadCompletedScreen extends StatelessWidget {
+  const UploadCompletedScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Function _nextScreen = () {
-      ScreenNavigatorController.navigateTo(
-        context: context,
-        screenRouteName: '/upload_completed_screen'
-      );
-    };
-
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Verify your upload'),
@@ -27,29 +22,40 @@ class FileUploadSettingScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                "Upload Setting",
+                "Upload Added to Queue",
                 style: TextStyle(
                   fontSize: 22.0
                 ),
               ),
               // Text(
-              //   "Define the configuration",
+              //   "Visit your history",
               //   style: TextStyle(
               //     fontSize: 14.0
               //   ),
               // ),
-              Spacer(flex: 1),
-              FileUploadSettingForm(uploadFileName: "API Design.pdf"),
-              Spacer(flex: 2),
-              UploadButton(
-                onPressed: _nextScreen
+              Spacer(flex: 30),
+              GoToButton(
+                title: "Go to Downloads",
+                onPressed: () {},
               ),
-              Spacer(flex: 1)
+              Spacer(flex: 3),
+              UploadButton(
+                title: "New Upload",
+                onPressed: () {
+                  print("Upload button is clicked");
+                },
+              ),
+              Spacer(flex: 3),
+              HomeButton(
+                onPressed: () {
+                  ScreenNavigatorController.navigateToHome();
+                },
+              ),
+              Spacer(flex: 30)
             ],
           ),
         ),
       )
     );
-      
   }
 }

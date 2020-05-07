@@ -19,11 +19,22 @@ class _FileUploadSettingFormState extends State<FileUploadSettingForm> {
       key: _formKey,
       child: Column(
         children: <Widget>[
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              "Selected File"
+            )
+          ),
           TextFieldTypeLong(
             readonly: true,
             initialValue: widget.uploadFileName
           ),
-          Text("Available Within", textAlign: TextAlign.left),
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              "Available Within"
+            )
+          ),
           AvailabilityDropDown(),
           CheckboxTypeLong(
             key: UniqueKey(),

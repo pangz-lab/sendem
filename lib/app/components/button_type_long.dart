@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 
 class ButtonTypeLong extends StatelessWidget {
   final Widget child;
-  final double width;
   final double height;
+  final Color color;
   final Function onPressed;
   const ButtonTypeLong({
     Key key,
     this.child,
     this.onPressed,
-    this.width = double.infinity,
+    this.color,
     this.height = 50 
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: this.width,
+      width: double.infinity,
       height: this.height,
       child: RaisedButton(
+        color: this.color,
         autofocus: true,
         clipBehavior: Clip.none,
         child: this.child,

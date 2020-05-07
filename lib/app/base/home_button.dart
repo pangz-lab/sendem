@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sendem/app/components/button_type_long.dart';
 
-class UploadButton extends StatelessWidget {
+class HomeButton extends StatelessWidget {
   final String title;
   final Function onPressed;
-  const UploadButton({
+
+  const HomeButton({
     Key key,
     this.onPressed,
-    this.title = "Upload"
+    this.title = "Home"
   }) : super(key: key);
 
   @override
@@ -15,7 +16,7 @@ class UploadButton extends StatelessWidget {
     return ButtonTypeLong(
       child: Row(
         children: <Widget>[
-          const Icon(Icons.cloud_upload),
+          const Icon(Icons.home),
           Spacer(flex: 1),
           Text(this.title),
         ],

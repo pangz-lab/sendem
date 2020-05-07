@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:sendem/app/components/button_type_long.dart';
 
-class UploadButton extends StatelessWidget {
+class GoToButton extends StatelessWidget {
   final String title;
   final Function onPressed;
-  const UploadButton({
+  const GoToButton({
     Key key,
     this.onPressed,
-    this.title = "Upload"
+    this.title = "Go to"
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ButtonTypeLong(
+      color: Theme.of(context).accentColor,
       child: Row(
         children: <Widget>[
-          const Icon(Icons.cloud_upload),
+          const Icon(Icons.list),
           Spacer(flex: 1),
           Text(this.title),
         ],

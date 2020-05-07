@@ -11,6 +11,7 @@ class FileDropArea extends StatelessWidget {
       onTap: () {
         HapticFeedback.lightImpact();
       },
+      hoverColor: Colors.orange,
       borderRadius: _borderRadius,
       child: Container(
         height: 300,
@@ -22,7 +23,7 @@ class FileDropArea extends StatelessWidget {
           border: Border.all(
             color: Colors.black,
             style: BorderStyle.solid,
-            width: 2.0  
+            width: 3.0  
           ),
           borderRadius: _borderRadius
         ),
@@ -30,7 +31,7 @@ class FileDropArea extends StatelessWidget {
         child: Center(
           child: Icon(
             Icons.add,
-            size: 50,
+            size: 80,
           )
         ),
       ),
