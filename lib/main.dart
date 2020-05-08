@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sendem/app/views/main_screen.dart';
-import 'package:sendem/app/views/file_upload_setting_screen.dart';
-import 'package:sendem/app/views/upload_completed_screen.dart';
+import 'package:sendem/app/components/main/main_screen.dart';
+import 'package:sendem/app/components/file_upload_setting/file_upload_setting_screen.dart';
+import 'package:sendem/app/components/upload_completed/upload_completed_screen.dart';
 
 void main() {
   runApp(new MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         canvasColor: const Color(0xFF2196f3),
         textTheme: TextTheme(
-          body1: TextStyle(
+          bodyText1: TextStyle(
             color: const Color(0xFF2196f3),
           )
         ),
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             color: Colors.blue,
           ),
           textTheme: TextTheme(
-            title: TextStyle(
+            headline6: TextStyle(
               color: const Color(0xFF2196f3),
               fontSize: 22.0
             )

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sendem/app/base/upload_button.dart';
 import 'package:sendem/app/base/download_button.dart';
-import 'package:sendem/app/components/container_main_view.dart';
+import 'package:sendem/app/common/container_main_view.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({Key key}) : super(key: key);

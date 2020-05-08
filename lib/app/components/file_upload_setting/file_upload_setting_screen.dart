@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sendem/app/base/upload_button.dart';
 import 'package:sendem/app/base/file_upload_setting_form.dart';
-import 'package:sendem/app/components/container_main_view.dart';
-import 'package:sendem/app/controllers/screen_navigator.dart';
+import 'package:sendem/app/common/container_main_view.dart';
+import 'package:sendem/app/core/screen_navigator.dart';
 
 class FileUploadSettingScreen extends StatelessWidget {
 
@@ -32,15 +32,9 @@ class FileUploadSettingScreen extends StatelessWidget {
                   fontSize: 22.0
                 ),
               ),
-              // Text(
-              //   "Define the configuration",
-              //   style: TextStyle(
-              //     fontSize: 14.0
-              //   ),
-              // ),
               Spacer(flex: 1),
               FileUploadSettingForm(uploadFileName: "API Design.pdf"),
-              Spacer(flex: 2),
+              Spacer(flex: 1),
               UploadButton(
                 onPressed: _nextScreen
               ),

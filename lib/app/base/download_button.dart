@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sendem/app/components/button_type_long.dart';
+import 'package:sendem/app/common/button_type_long.dart';
 
 class DownloadButton extends StatelessWidget {
   final String title;

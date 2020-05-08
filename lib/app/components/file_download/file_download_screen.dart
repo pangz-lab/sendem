@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sendem/app/base/file_scan_area.dart';
 import 'package:sendem/app/base/next_button.dart';
-import 'package:sendem/app/components/container_main_view.dart';
+import 'package:sendem/app/common/container_main_view.dart';
 
 class FileDownloadScreen extends StatelessWidget {
   const FileDownloadScreen({Key key}) : super(key: key);

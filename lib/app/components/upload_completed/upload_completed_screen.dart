@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sendem/app/base/upload_button.dart';
 import 'package:sendem/app/base/goto_button.dart';
 import 'package:sendem/app/base/home_button.dart';
-import 'package:sendem/app/components/container_main_view.dart';
-import 'package:sendem/app/controllers/screen_navigator.dart';
+import 'package:sendem/app/common/container_main_view.dart';
+import 'package:sendem/app/core/screen_navigator.dart';
 
 class UploadCompletedScreen extends StatelessWidget {
   const UploadCompletedScreen({Key key}) : super(key: key);
