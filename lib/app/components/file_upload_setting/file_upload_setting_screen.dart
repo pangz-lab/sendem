@@ -2,18 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sendem/app/base/upload_button.dart';
 import 'package:sendem/app/base/file_upload_setting_form.dart';
 import 'package:sendem/app/common/container_main_view.dart';
-import 'package:sendem/app/core/screen_navigator.dart';
+import 'package:sendem/app/services/screen_navigator.dart';
 
 class FileUploadSettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Function _nextScreen = () {
-      ScreenNavigatorController.navigateTo(
-        context: context,
-        screenRouteName: '/upload_completed_screen'
-      );
-    };
 
     return new Scaffold(
       appBar: new AppBar(
@@ -36,7 +30,9 @@ class FileUploadSettingScreen extends StatelessWidget {
               FileUploadSettingForm(uploadFileName: "API Design.pdf"),
               Spacer(flex: 1),
               UploadButton(
-                onPressed: _nextScreen
+                onPressed: () {
+                  ScreenNavigatorService.navigateToUpload(context: context);
+                }
               ),
               Spacer(flex: 1)
             ],

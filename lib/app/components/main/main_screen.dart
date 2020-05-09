@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sendem/app/components/home/home_screen.dart';
-import 'package:sendem/app/components/file_upload/file_upload_screen.dart';
-import 'package:sendem/app/components/file_download/file_download_screen.dart';
-import 'package:sendem/app/components/history/history_screen.dart';
+import 'package:sendem/app/setting/screen_route_collection.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key}) : super(key: key);
@@ -12,13 +9,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    FileUploadScreen(),
-    FileDownloadScreen(),
-    HistoryScreen(),
-    HomeScreen()
-  ];
+  static List<Widget> _widgetOptions = ScreenRouteCollection.mainScreen;
 
   void _switchScreen(int index) {
     setState(() {

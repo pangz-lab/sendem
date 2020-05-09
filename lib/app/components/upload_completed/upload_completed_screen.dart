@@ -3,7 +3,7 @@ import 'package:sendem/app/base/upload_button.dart';
 import 'package:sendem/app/base/goto_button.dart';
 import 'package:sendem/app/base/home_button.dart';
 import 'package:sendem/app/common/container_main_view.dart';
-import 'package:sendem/app/core/screen_navigator.dart';
+import 'package:sendem/app/services/screen_navigator.dart';
 
 class UploadCompletedScreen extends StatelessWidget {
   const UploadCompletedScreen({Key key}) : super(key: key);
@@ -48,7 +48,7 @@ class UploadCompletedScreen extends StatelessWidget {
               Spacer(flex: 3),
               HomeButton(
                 onPressed: () {
-                  ScreenNavigatorController.navigateToHome();
+                  ScreenNavigatorService.navigateToHome();
                 },
               ),
               Spacer(flex: 30)
