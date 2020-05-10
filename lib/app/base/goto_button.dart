@@ -3,11 +3,13 @@ import 'package:sendem/app/common/button_type_long.dart';
 
 class GoToButton extends StatelessWidget {
   final String title;
+  final IconData icon;
   final Function onPressed;
   const GoToButton({
     Key key,
     this.onPressed,
-    this.title = "Go to"
+    this.title = "Go to",
+    this.icon = Icons.list
   }) : super(key: key);
 
   @override
@@ -16,7 +18,7 @@ class GoToButton extends StatelessWidget {
       color: Theme.of(context).accentColor,
       child: Row(
         children: <Widget>[
-          const Icon(Icons.list),
+          Icon(this.icon),
           Spacer(flex: 1),
           Text(this.title),
         ],

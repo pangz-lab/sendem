@@ -4,7 +4,7 @@ import 'package:sendem/app/base/file_upload_setting_form.dart';
 import 'package:sendem/app/common/container_main_view.dart';
 import 'package:sendem/app/services/screen_navigator.dart';
 
-class FileUploadSettingScreen extends StatelessWidget {
+class FileUploadConfirmationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +40,5 @@ class FileUploadSettingScreen extends StatelessWidget {
         ),
       )
     );
-      
   }
 }

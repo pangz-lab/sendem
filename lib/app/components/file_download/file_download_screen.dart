@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sendem/app/base/file_scan_area.dart';
 import 'package:sendem/app/base/next_button.dart';
 import 'package:sendem/app/common/container_main_view.dart';
+import 'package:sendem/app/services/screen_navigator.dart';
 
 class FileDownloadScreen extends StatelessWidget {
   const FileDownloadScreen({Key key}) : super(key: key);
@@ -30,7 +31,11 @@ class FileDownloadScreen extends StatelessWidget {
             Spacer(flex: 2),
             FileScanArea(),
             Spacer(flex: 4),
-            NextButton(),
+            NextButton(
+              onPressed: () {
+                ScreenNavigatorService.navigateToDownloadConfirmation(context: context);
+              },
+            ),
             Spacer(flex: 2)
           ],
         ),

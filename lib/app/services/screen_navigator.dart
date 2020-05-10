@@ -40,10 +40,10 @@ class ScreenNavigatorService {
     );
   }
 
-  static void navigateToUploadSetting({BuildContext context}) {
+  static void navigateToUploadConfirmation({BuildContext context}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_upload_setting'
+      screenRouteName: 'file_upload_confirmation'
     );
   }
 
@@ -58,6 +58,20 @@ class ScreenNavigatorService {
     ScreenNavigatorService.navigateToScreen(
       context: context,
       screenRouteName: 'file_download'
+    );
+  }
+
+  static void navigateToDownloadConfirmation({BuildContext context}) {
+    ScreenNavigatorService.navigateToScreen(
+      context: context,
+      screenRouteName: 'file_download_confirmation'
+    );
+  }
+
+  static void navigateToDownloadCompleted({BuildContext context}) {
+    ScreenNavigatorService.navigateToScreen(
+      context: context,
+      screenRouteName: 'file_download_completed'
     );
   }
 

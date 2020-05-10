@@ -6,8 +6,8 @@ import 'package:sendem/app/common/container_main_view.dart';
 import 'package:sendem/app/services/screen_navigator.dart';
 import 'package:sendem/app/setting/screen_route_collection.dart';
 
-class UploadCompletedScreen extends StatelessWidget {
-  const UploadCompletedScreen({Key key}) : super(key: key);
+class FileDownloadCompletedScreen extends StatelessWidget {
+  const FileDownloadCompletedScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class UploadCompletedScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                "Upload Added to Queue",
+                "Download Added to Queue",
                 style: TextStyle(
                   fontSize: 22.0
                 ),
@@ -41,11 +41,11 @@ class UploadCompletedScreen extends StatelessWidget {
               ),
               Spacer(flex: 3),
               UploadButton(
-                title: "New Upload",
+                title: "New Download",
                 onPressed: () {
                   ScreenNavigatorService.navigateToMain(
                     context: context,
-                    screenIndex: ScreenRouteCollection.mainScreenIndex['file_upload']
+                    screenIndex: ScreenRouteCollection.mainScreenIndex['file_download']
                   );
                 },
               ),
