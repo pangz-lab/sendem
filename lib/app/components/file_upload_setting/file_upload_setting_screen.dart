@@ -31,7 +31,7 @@ class FileUploadSettingScreen extends StatelessWidget {
               Spacer(flex: 1),
               UploadButton(
                 onPressed: () {
-                  ScreenNavigatorService.navigateToUpload(context: context);
+                  ScreenNavigatorService.navigateToUploadCompeted(context: context);
                 }
               ),
               Spacer(flex: 1)

@@ -4,6 +4,7 @@ import 'package:sendem/app/base/goto_button.dart';
 import 'package:sendem/app/base/home_button.dart';
 import 'package:sendem/app/common/container_main_view.dart';
 import 'package:sendem/app/services/screen_navigator.dart';
+import 'package:sendem/app/setting/screen_route_collection.dart';
 
 class UploadCompletedScreen extends StatelessWidget {
   const UploadCompletedScreen({Key key}) : super(key: key);
@@ -42,13 +43,16 @@ class UploadCompletedScreen extends StatelessWidget {
               UploadButton(
                 title: "New Upload",
                 onPressed: () {
-                  print("Upload button is clicked");
+                  ScreenNavigatorService.navigateToMain(
+                    context: context,
+                    screenIndex: ScreenRouteCollection.mainScreenIndex['file_upload']
+                  );
                 },
               ),
               Spacer(flex: 3),
               HomeButton(
                 onPressed: () {
-                  ScreenNavigatorService.navigateToHome();
+                  ScreenNavigatorService.navigateToMain(context: context);
                 },
               ),
               Spacer(flex: 30)

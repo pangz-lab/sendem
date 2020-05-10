@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sendem/app/components/main/main_screen.dart';
 import 'package:sendem/app/setting/screen_route_collection.dart';
 
 class ScreenNavigatorService {
@@ -14,6 +15,17 @@ class ScreenNavigatorService {
     );
   }
 
+  static void navigateToMain({BuildContext context, int screenIndex }) {
+    int defaultIndex = screenIndex ?? ScreenRouteCollection.mainScreenIndex['home'];
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MainScreen(screenIndex: defaultIndex)
+      ),
+    );
+  }
+
   static void navigateToHome({BuildContext context}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
@@ -24,14 +36,28 @@ class ScreenNavigatorService {
   static void navigateToUpload({BuildContext context}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'upload'
+      screenRouteName: 'file_upload'
+    );
+  }
+
+  static void navigateToUploadSetting({BuildContext context}) {
+    ScreenNavigatorService.navigateToScreen(
+      context: context,
+      screenRouteName: 'file_upload_setting'
+    );
+  }
+
+  static void navigateToUploadCompeted({BuildContext context}) {
+    ScreenNavigatorService.navigateToScreen(
+      context: context,
+      screenRouteName: 'file_upload_completed'
     );
   }
 
   static void navigateToDownload({BuildContext context}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'download'
+      screenRouteName: 'file_download'
     );
   }
 

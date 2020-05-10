@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:sendem/app/setting/screen_route_collection.dart';
 
 class MainScreen extends StatefulWidget {
-  MainScreen({Key key}) : super(key: key);
+  final int screenIndex;
+  MainScreen({Key key, this.screenIndex = 0}) : super(key: key);
   @override
-  _MainScreenState createState() => new _MainScreenState();
+  _MainScreenState createState() => new _MainScreenState(index: screenIndex);
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex;
   static List<Widget> _widgetOptions = ScreenRouteCollection.mainScreen;
+
+  @override
+  _MainScreenState({int index}) {
+    _selectedIndex = index;
+  }
 
   void _switchScreen(int index) {
     setState(() {
@@ -19,6 +25,10 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+    // _selectedIndex = args?.screenIndex ?? _selectedIndex ?? 0;
+    // ModalRoute.of(context)?.dispose();
+    
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('SendEm'),
