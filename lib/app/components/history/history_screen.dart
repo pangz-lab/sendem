@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sendem/app/base/upload_button.dart';
 import 'package:sendem/app/base/download_button.dart';
 import 'package:sendem/app/common/container_main_view.dart';
+import 'package:sendem/app/services/screen_navigator.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({Key key}) : super(key: key);
@@ -28,9 +29,17 @@ class HistoryScreen extends StatelessWidget {
                 ),
               ),
               Spacer(flex: 10),
-              UploadButton(),
+              UploadButton(
+                onPressed: () {
+                  ScreenNavigatorService.navigateToUploadHistory(context: context);
+                },
+              ),
               Spacer(flex: 1),
-              DownloadButton(),
+              DownloadButton(
+                onPressed: () {
+                  ScreenNavigatorService.navigateToDownloadHistory(context: context);
+                },
+              ),
               Spacer(flex: 6)
             ],
           ),

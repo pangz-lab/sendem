@@ -54,6 +54,13 @@ class ScreenNavigatorService {
     );
   }
 
+  static void navigateToUploadHistory({BuildContext context}) {
+    ScreenNavigatorService.navigateToScreen(
+      context: context,
+      screenRouteName: 'file_upload_history'
+    );
+  }
+
   static void navigateToDownload({BuildContext context}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
@@ -75,6 +82,13 @@ class ScreenNavigatorService {
     );
   }
 
+  static void navigateToDownloadHistory({BuildContext context}) {
+    ScreenNavigatorService.navigateToScreen(
+      context: context,
+      screenRouteName: 'file_download_history'
+    );
+  }
+
   static void navigateToHistory({BuildContext context}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
@@ -82,10 +96,10 @@ class ScreenNavigatorService {
     );
   }
 
-  static void navigateToUploadComplete({BuildContext context}) {
+  static void navigateToFileInformation({BuildContext context}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'upload_complete'
+      screenRouteName: 'file_information'
     );
   }
 }

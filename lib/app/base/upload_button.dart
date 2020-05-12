@@ -14,10 +14,13 @@ class UploadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonTypeLong(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Icon(Icons.cloud_upload),
-          Spacer(flex: 1),
-          Text(this.title),
+          const Text(" "),
+          Text(
+            this.title,
+          ),
         ],
       ),
       onPressed: this.onPressed,

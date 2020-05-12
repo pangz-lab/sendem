@@ -15,9 +15,10 @@ class HomeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonTypeLong(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Icon(Icons.home),
-          Spacer(flex: 1),
+          const Text(" "),
           Text(this.title),
         ],
       ),

@@ -14,9 +14,10 @@ class DownloadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonTypeLong(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Icon(Icons.file_download),
-          Spacer(flex: 1),
+          Text(" "),
           Text(this.title),
         ],
       ),

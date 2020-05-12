@@ -17,9 +17,10 @@ class GoToButton extends StatelessWidget {
     return ButtonTypeLong(
       color: Theme.of(context).accentColor,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Icon(this.icon),
-          Spacer(flex: 1),
+          const Text(" "),
           Text(this.title),
         ],
       ),

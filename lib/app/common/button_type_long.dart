@@ -19,8 +19,9 @@ class ButtonTypeLong extends StatelessWidget {
       width: double.infinity,
       height: this.height,
       child: RaisedButton(
-        color: this.color,
         autofocus: true,
+        visualDensity: VisualDensity.comfortable,
+        color: this.color,
         clipBehavior: Clip.none,
         child: this.child,
         onPressed: this.onPressed
