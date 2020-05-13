@@ -31,7 +31,9 @@ class FileDownloadConfirmationScreen extends StatelessWidget {
               GoToButton(
                 title: "Get Info",
                 icon: Icons.info,
-                onPressed: () {},
+                onPressed: () {
+                  ScreenNavigatorService.navigateToFileInformation(context: context);
+                }
               ),
               Spacer(flex: 3),
               DownloadButton(

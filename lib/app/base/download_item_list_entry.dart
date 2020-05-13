@@ -19,6 +19,8 @@ class DownloadItemListEntry extends StatelessWidget {
       margin: EdgeInsets.fromLTRB(10.0, 1.0, 10.0, 2.0),
       child: ListTileItem(
         onTap: this.onTap,
+        title: this.filename,
+        subTitle: this.subTitle,
         leadingWidget: const Icon(Icons.file_download, size: 35.0),
         trailingWidget: Container(
           padding: EdgeInsets.all(10),
@@ -31,8 +33,6 @@ class DownloadItemListEntry extends StatelessWidget {
             borderRadius: BorderRadius.circular(45)
           ),
         ),
-        title: this.filename,
-        subTitle: this.subTitle
       ),
       decoration: BoxDecoration(
         border: Border.all(

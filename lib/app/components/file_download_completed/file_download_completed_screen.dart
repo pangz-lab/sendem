@@ -37,7 +37,9 @@ class FileDownloadCompletedScreen extends StatelessWidget {
               Spacer(flex: 30),
               GoToButton(
                 title: "Go to Downloads",
-                onPressed: () {},
+                onPressed: () {
+                  ScreenNavigatorService.navigateToDownloadHistory(context: context);
+                },
               ),
               Spacer(flex: 3),
               UploadButton(

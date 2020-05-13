@@ -36,8 +36,10 @@ class FileUploadCompletedScreen extends StatelessWidget {
               // ),
               Spacer(flex: 30),
               GoToButton(
-                title: "Go to Downloads",
-                onPressed: () {},
+                title: "Go to Uploads",
+                onPressed: () {
+                  ScreenNavigatorService.navigateToUploadHistory(context: context);
+                }
               ),
               Spacer(flex: 3),
               UploadButton(
