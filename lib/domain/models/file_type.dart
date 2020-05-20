@@ -1,0 +1,4 @@
+enum FileType {
+  download,
+  upload
+}
