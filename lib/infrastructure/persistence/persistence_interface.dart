@@ -1,9 +1,9 @@
 import 'package:sendem/domain/repository/common_repository/data_repository_interface.dart';
 
 class PersistentStoreInterface {
-  PersistentStoreDataManagerInterface create(String storeName) async { return null;}
-  Future<PersistentStoreDataManagerInterface> reset(String storeName) async { return null;}
-  Future<bool> delete(String storeName) { return null;}
+  PersistentStoreDataManagerInterface use(String storeName) { return null;}
+  PersistentStoreDataManagerInterface reset(String storeName) { return null;}
+  bool delete(String storeName) { return null;}
 }
 
 class PersistentStoreDataManagerInterface implements DataRepositoryInterface {

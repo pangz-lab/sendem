@@ -1,40 +1,62 @@
 import 'dart:io';
-
 import 'package:hive/hive.dart';
 import 'package:sendem/infrastructure/persistence/persistence_interface.dart';
 
 class HiveDataStore implements PersistentStoreInterface {
-  String store;
-  PersistentStoreDataManagerInterface create(String storeName) {
-    this.store = storeName;
-    return HiveDataStoreManager(Hive.box(this.store));
+  dynamic store;
+  String storeDirPath;
+
+  PersistentStoreDataManagerInterface use(String storeName) {
+    return HiveDataStoreManager(Hive.box(storeName));
   }
 
-  Future<PersistentStoreDataManagerInterface> reset(String storeName) async {
-    this.store = storeName;
-    return await Hive.deleteBoxFromDisk(this.store)
-    .catchError(() {
+  PersistentStoreDataManagerInterface reset(String storeName) {
+    this.store = Hive.box(storeName);
+    this.store.clear()
+    ..catchError((e) {
       throw new HiveDataStoreException();
-    }).then((data) {
-      return HiveDataStoreManager(Hive.box(this.store));
     });
+    return HiveDataStoreManager(store);
   }
 
-  Future<bool> delete(String storeName) async {
-    return await Hive.deleteBoxFromDisk(this.store)
-    .catchError(() {
+  bool delete(String storeName) {
+    Hive.box(storeName).deleteFromDisk()
+    ..catchError((e) {
       throw new HiveDataStoreException();
-    }).then((data) {
-      return true;
     });
+    return true;
+  }
+
+  Future<dynamic> open(String storeName) async {
+    return await Hive.openBox(storeName);
+  }
+  
+  void close(String storeName) {
+    Hive.box(storeName).close();
   }
 }
 
 class HiveDataStoreManager implements PersistentStoreDataManagerInterface {
   Box<dynamic> box;
   HiveDataStoreManager(this.box);
-  dynamic select(dynamic data) { return false;}
-  bool insert(dynamic data) { return false;}
+
+  dynamic select(dynamic object) {
+    assert(object.key != null);
+    return this.box.get(object.key);
+  }
+
+  bool insert(dynamic object) {
+    assert(object.key != null);
+    assert(object.value != null);
+
+    this.box.put(object.key, object.value)
+    .catchError((e) {
+      throw new HiveDataStoreInsertionError();
+    });
+
+    return true;
+  }
+
   bool update(dynamic data) { return false;}
   bool updateByType(int id, dynamic data) { return false;}
   bool delete(dynamic data) { return false;}
@@ -43,3 +65,4 @@ class HiveDataStoreManager implements PersistentStoreDataManagerInterface {
 }
 
 class HiveDataStoreException extends IOException {}
+class HiveDataStoreInsertionError extends Error {}

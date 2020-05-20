@@ -1,9 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:sendem/app/provider/data_presistence_provider.dart';
 import 'package:sendem/app/setting/screen_route_collection.dart';
-void main() {
-  runApp(new MyApp());
+import 'package:sendem/infrastructure/persistence/hive/hive_store.dart';
+void main() async {
+  await Hive.initFlutter();
+  // var db = HiveDataStore();
+  // dynamic d = TestData("files", "SampleFile2");
+  // await db.open("sendemStore");
+  // var dbm = db.use("sendemStore");
+  // dbm.insert(d);
+  // print(dbm.select(d));
+  Map<String, Object> dpCollection = [
+    {'HiveDataStore' : HiveDataStore()}
+  ];
+  
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<DataPersistenceProvider>(create: (_) => new DataPersistenceProvider(dpCollection)),
+      ],
+      child: new MyApp(),
+    )
+  );
 }
 
+class TestData {
+  String key;
+  String value;
+  TestData(this.key, this.value);
+}
 class MyApp extends StatelessWidget {
 
   @override
