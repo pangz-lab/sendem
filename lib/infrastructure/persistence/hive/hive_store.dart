@@ -1,10 +1,14 @@
 import 'dart:io';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sendem/infrastructure/persistence/persistence_interface.dart';
 
 class HiveDataStore implements PersistentStoreInterface {
   dynamic store;
-  String storeDirPath;
+
+  // HiveDataStore() {
+  //   // this.connect();
+  // }
 
   PersistentStoreDataManagerInterface use(String storeName) {
     return HiveDataStoreManager(Hive.box(storeName));
@@ -27,8 +31,12 @@ class HiveDataStore implements PersistentStoreInterface {
     return true;
   }
 
-  Future<dynamic> open(String storeName) async {
-    return await Hive.openBox(storeName);
+  Future<PersistentStoreDataManagerInterface> openAndUse(String storeName) async {
+    return HiveDataStoreManager(await Hive.openBox(storeName));
+  }
+
+  Future<void> connect() async {
+    await Hive.initFlutter();
   }
   
   void close(String storeName) {
@@ -41,15 +49,14 @@ class HiveDataStoreManager implements PersistentStoreDataManagerInterface {
   HiveDataStoreManager(this.box);
 
   dynamic select(dynamic object) {
-    assert(object.key != null);
-    return this.box.get(object.key);
+    assert(object.runtimeType == PersistentDataParam);
+    return this.box.get(object.shelf);
   }
 
   bool insert(dynamic object) {
-    assert(object.key != null);
-    assert(object.value != null);
+    assert(object.runtimeType == PersistentDataParam);
 
-    this.box.put(object.key, object.value)
+    this.box.put(object.shelf, object.item)
     .catchError((e) {
       throw new HiveDataStoreInsertionError();
     });

@@ -7,6 +7,9 @@ class File {
   FileType type;
   FileStatus status;
   String qrData;
-  int createdDate;
-  int updatedDate;
+  String uri;
+  String checksum;
+  String expiryDate;
+  String createdDate;
+  String updatedDate;
 }

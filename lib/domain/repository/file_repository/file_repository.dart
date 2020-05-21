@@ -1,6 +1,6 @@
 import 'package:sendem/app/provider/app_provider_interface.dart';
 import 'package:sendem/domain/models/file.dart';
-import 'package:sendem/domain/repository/common_repository/data_repository_interface.dart';
+import 'package:sendem/infrastructure/repository/data_repository_interface.dart';
 import 'package:sendem/domain/repository/file_repository/file_repository_interface.dart';
 
 class FileRepository implements FileRepositoryInterface {

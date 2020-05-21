@@ -1,4 +1,5 @@
-import 'package:sendem/domain/repository/common_repository/data_repository_interface.dart';
+import 'package:flutter/widgets.dart';
+import 'package:sendem/infrastructure/repository/data_repository_interface.dart';
 
 class PersistentStoreInterface {
   PersistentStoreDataManagerInterface use(String storeName) { return null;}
@@ -14,4 +15,12 @@ class PersistentStoreDataManagerInterface implements DataRepositoryInterface {
   bool delete(dynamic data) { return false;}
   int count() { return 0;}
   int countBy(dynamic data) { return 0;}
+}
+
+class PersistentDataParam {
+  //Table
+  String shelf;
+  //Table row
+  String item;
+  PersistentDataParam({@required this.shelf, @required this.item});
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sendem/app/provider/data_presistence_provider.dart';
 import 'package:sendem/app/setting/screen_route_collection.dart';
+import 'package:sendem/infrastructure/persistence/persistence_interface.dart';
+import 'package:sendem/infrastructure/api/api_interface.dart';
 
 class MainScreen extends StatefulWidget {
   final int screenIndex;
@@ -25,9 +29,25 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final ScreenArguments args = ModalRoute.of(context).settings.arguments;
-    // _selectedIndex = args?.screenIndex ?? _selectedIndex ?? 0;
-    // ModalRoute.of(context)?.dispose();
+    var dpProvider = Provider.of<DataPersistenceProvider>(context, listen: false);
+    var store = dpProvider.getInstance("HiveDataStore");
+    var oshiRest = dpProvider.getInstance("OshiRestApi");
+
+    store.openAndUse("sendemStore").then((dbm) {
+      dynamic d = PersistentDataParam( shelf: "shelf1", item: "Shelfvalue1");
+      dbm.insert(d);
+      print(dbm.select(d));
+    });
+
+    oshiRest.uploadFile(
+      ApiRequestParameter(
+        file: '/storage/emulated/0/Documents/MockApp/projects.json'
+      )
+    ).then((uri) {
+      oshiRest.getInfo(uri);
+    });
+    
+    
     
     return new Scaffold(
       appBar: new AppBar(
