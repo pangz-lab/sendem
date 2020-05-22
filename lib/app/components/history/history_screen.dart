@@ -30,9 +30,9 @@ class HistoryScreen extends StatelessWidget {
               ),
               Spacer(flex: 10),
               UploadButton(
-                onPressed: () {
-                  ScreenNavigatorService.navigateToUploadHistory(context: context);
-                },
+                // onPressed: () {
+                //   ScreenNavigatorService.navigateToUploadHistory(context: context);
+                // },
               ),
               Spacer(flex: 1),
               DownloadButton(

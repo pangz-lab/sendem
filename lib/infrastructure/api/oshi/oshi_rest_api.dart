@@ -49,33 +49,13 @@ class OshiRestApi implements ApiInterface {
     Map<String,dynamic> pageInfo = {};
     var page = await _getHtmlPage(pageUri);
     var document = parse(page);
-
-    print("HTML Content >>>>>>>>>>> ");
-    print("Clearnet DL");
-    pageInfo['clearNetDownload'] = _getClassElementAt(document,"col text-left",0).firstChild.attributes['href'];
-    print(pageInfo['clearNetDownload']);
-
-    print("Tor DL");
-    pageInfo['torDownload'] = _getClassElementAt(document,"col text-left",1).firstChild.attributes['href'];
-    print(pageInfo['clearNetDownload']);
     
-    print("Size");
+    pageInfo['clearNetDownload'] = _getClassElementAt(document,"col text-left",0).firstChild.attributes['href'];
+    pageInfo['torDownload'] = _getClassElementAt(document,"col text-left",1).firstChild.attributes['href'];
     pageInfo['fileSize'] = _getClassElementAt(document,"col text-left",2).innerHtml;
-    print(pageInfo['fileSize']);
-
-    print("Sha1CheckSum");
     pageInfo['sha1Checksum'] = _getClassElementAt(document,"col text-left",4).innerHtml;
-    print(pageInfo['sha1Checksum']);
-
-    print("Created Date");
     pageInfo['creationDate'] = _getClassElementAt(document,"col text-left",5).innerHtml;
-    print(pageInfo['creationDate']);
-    // print(document.getElementsByClassName("col text-left").elementAt(5).innerHtml);
-
-    print("Expiry Date");
     pageInfo['expiryDate'] = _getClassElementAt(document,"col text-left",6).innerHtml;
-    print(pageInfo['expiryDate']);
-    // print(document.getElementsByClassName("col text-left").elementAt(6).innerHtml);
 
     return pageInfo;
   }

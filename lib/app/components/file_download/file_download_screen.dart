@@ -32,9 +32,9 @@ class FileDownloadScreen extends StatelessWidget {
             FileScanArea(),
             Spacer(flex: 4),
             NextButton(
-              onPressed: () {
-                ScreenNavigatorService.navigateToDownloadConfirmation(context: context);
-              },
+              // onPressed: () {
+              //   ScreenNavigatorService.navigateToDownloadConfirmation(context: context);
+              // },
             ),
             Spacer(flex: 2)
           ],

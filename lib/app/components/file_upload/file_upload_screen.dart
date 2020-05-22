@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:sendem/app/base/file_drop_area.dart';
 import 'package:sendem/app/base/next_button.dart';
+import 'package:sendem/app/base/file_drop_area.dart';
 import 'package:sendem/app/common/container_main_view.dart';
-import 'package:sendem/app/services/screen_navigator.dart';
+import 'package:sendem/app/components/file_upload/file_upload_controller.dart';
 
 class FileUploadScreen extends StatelessWidget {
-  const FileUploadScreen({Key key}) : super(key: key);
+  final FileUploadController _controller = new FileUploadController();
+  FileUploadScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
+    // _controller.setContext(context);
     return ContainerMainView(
         child: new Container(
           padding: const EdgeInsets.all(30.0),
@@ -30,12 +31,14 @@ class FileUploadScreen extends StatelessWidget {
                 ),
               ),
               Spacer(flex: 1),
-              FileDropArea(),
+              // _controller.fileDropArea,
+              FileDropArea(
+                controller: _controller.fileDropAreaController
+              ),
               Spacer(flex: 2),
+              // _controller.nextButton,
               NextButton(
-                onPressed: () {
-                  ScreenNavigatorService.navigateToUploadConfirmation(context: context);
-                },
+                onPressed: (){},
               ),
               Spacer(flex: 1)
             ],

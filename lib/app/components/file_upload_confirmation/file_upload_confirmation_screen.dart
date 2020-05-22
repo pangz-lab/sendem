@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:sendem/app/base/upload_button.dart';
 import 'package:sendem/app/base/file_upload_setting_form.dart';
 import 'package:sendem/app/common/container_main_view.dart';
-import 'package:sendem/app/services/screen_navigator.dart';
+import 'package:sendem/app/components/file_upload_confirmation/file_upload_confirmation_controller.dart';
 
 class FileUploadConfirmationScreen extends StatelessWidget {
+  // final FileUploadConfirmationController controller = FileUploadConfirmationController();
 
   @override
   Widget build(BuildContext context) {
 
+    // this.controller.uploadButtonController.setContext(context);
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Verify your upload'),
@@ -30,9 +32,7 @@ class FileUploadConfirmationScreen extends StatelessWidget {
               FileUploadSettingForm(uploadFileName: "API Design.pdf"),
               Spacer(flex: 1),
               UploadButton(
-                onPressed: () {
-                  ScreenNavigatorService.navigateToUploadCompeted(context: context);
-                }
+                // controller: this.controller.uploadButtonController
               ),
               Spacer(flex: 1)
             ],

@@ -43,13 +43,13 @@ class FileDownloadCompletedScreen extends StatelessWidget {
               ),
               Spacer(flex: 3),
               UploadButton(
-                title: "New Download",
-                onPressed: () {
-                  ScreenNavigatorService.navigateToMain(
-                    context: context,
-                    screenIndex: ScreenRouteCollection.mainScreenIndex['file_download']
-                  );
-                },
+                // title: "New Download",
+                // onPressed: () {
+                //   ScreenNavigatorService.navigateToMain(
+                //     context: context,
+                //     screenIndex: ScreenRouteCollection.mainScreenIndex['file_download']
+                //   );
+                // },
               ),
               Spacer(flex: 3),
               HomeButton(

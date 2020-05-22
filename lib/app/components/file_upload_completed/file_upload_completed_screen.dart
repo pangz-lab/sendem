@@ -43,13 +43,13 @@ class FileUploadCompletedScreen extends StatelessWidget {
               ),
               Spacer(flex: 3),
               UploadButton(
-                title: "New Upload",
-                onPressed: () {
-                  ScreenNavigatorService.navigateToMain(
-                    context: context,
-                    screenIndex: ScreenRouteCollection.mainScreenIndex['file_upload']
-                  );
-                },
+                // title: "New Upload",
+                // onPressed: () {
+                //   ScreenNavigatorService.navigateToMain(
+                //     context: context,
+                //     screenIndex: ScreenRouteCollection.mainScreenIndex['file_upload']
+                //   );
+                // },
               ),
               Spacer(flex: 3),
               HomeButton(

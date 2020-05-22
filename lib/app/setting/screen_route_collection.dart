@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sendem/app/components/file_information/file_information_screen.dart';
+import 'package:sendem/app/components/file_upload/file_upload_screen.dart';
 import 'package:sendem/app/components/main/main_screen.dart';
 import 'package:sendem/app/components/home/home_screen.dart';
-import 'package:sendem/app/components/file_upload/file_upload_screen.dart';
 import 'package:sendem/app/components/file_upload_confirmation/file_upload_confirmation_screen.dart';
 import 'package:sendem/app/components/file_upload_completed/file_upload_completed_screen.dart';
 import 'package:sendem/app/components/file_upload_history/file_upload_history_screen.dart';
