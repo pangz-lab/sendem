@@ -5,14 +5,14 @@ import 'package:sendem/app/common/container_main_view.dart';
 import 'package:sendem/app/components/file_upload/file_upload_controller.dart';
 
 class FileUploadScreen extends StatelessWidget {
-  final FileUploadController _controller = new FileUploadController();
+  final FileUploadController controller = FileUploadController();
   FileUploadScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // _controller.setContext(context);
+    controller.setContext(context);
     return ContainerMainView(
-        child: new Container(
+        child: Container(
           padding: const EdgeInsets.all(30.0),
           alignment: Alignment.center,
 
@@ -33,12 +33,14 @@ class FileUploadScreen extends StatelessWidget {
               Spacer(flex: 1),
               // _controller.fileDropArea,
               FileDropArea(
-                controller: _controller.fileDropAreaController
+                controller: controller.fileDropAreaController
               ),
               Spacer(flex: 2),
               // _controller.nextButton,
               NextButton(
-                onPressed: (){},
+                onPressed: () {
+                  controller.goNext();
+                },
               ),
               Spacer(flex: 1)
             ],

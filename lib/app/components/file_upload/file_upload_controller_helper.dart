@@ -1,20 +1,15 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:sendem/app/base/file_drop_area.dart';
-import 'package:sendem/app/base/next_button.dart';
 import 'package:sendem/app/controller/screen_controller.dart';
 
 class FileDropAreaController 
 extends ScreenController 
 implements FileDropAreaControllerInterface {
   File file;
-  NextButton nextButton;
-
-  FileDropAreaController({this.nextButton});
 
   void afterFileSelected(Widget containerWidget, File selectedFile) {
     this.file = selectedFile;
-    // this.nextButton.currentState.enable();
   }
   
   Widget containerAfterSelection(File file) {
@@ -31,7 +26,7 @@ implements FileDropAreaControllerInterface {
         border: Border.all(
           color: Colors.black,
           style: BorderStyle.solid,
-          width: 1.0  
+          width: 1.0
         ),
         borderRadius: BorderRadius.circular(10),
       ),
@@ -49,3 +44,7 @@ implements FileDropAreaControllerInterface {
 //     ScreenNavigatorService.navigateToUploadConfirmation(context: this.context);
 //   }
 // }
+
+class FileUploadEvents {
+  
+}
