@@ -4,14 +4,27 @@ import 'package:sendem/app/setting/screen_route_collection.dart';
 
 class ScreenNavigatorService {
 
-  static void navigateTo({BuildContext context, String screenRouteName}) {
-    Navigator.pushNamed(context, screenRouteName);
+  static void navigateTo({
+    BuildContext context,
+    String screenRouteName,
+    Object screenArguments
+    }) {
+    Navigator.pushNamed(
+      context,
+      screenRouteName,
+      arguments: screenArguments
+    );
   }
 
-  static void navigateToScreen({BuildContext context, String screenRouteName}) {
+  static void navigateToScreen({
+    BuildContext context,
+    String screenRouteName,
+    Object screenArguments
+  }) {
     ScreenNavigatorService.navigateTo(
       context: context,
-      screenRouteName: ScreenRouteCollection.ROUTE_NAME[screenRouteName]
+      screenRouteName: ScreenRouteCollection.ROUTE_NAME[screenRouteName],
+      screenArguments: screenArguments
     );
   }
 
@@ -26,80 +39,91 @@ class ScreenNavigatorService {
     );
   }
 
-  static void navigateToHome({BuildContext context}) {
+  static void navigateToHome({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'home'
+      screenRouteName: 'home',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToUpload({BuildContext context}) {
+  static void navigateToUpload({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_upload'
+      screenRouteName: 'file_upload',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToUploadConfirmation({BuildContext context}) {
+  static void navigateToUploadConfirmation({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_upload_confirmation'
+      screenRouteName: 'file_upload_confirmation',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToUploadCompeted({BuildContext context}) {
+  static void navigateToUploadCompeted({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_upload_completed'
+      screenRouteName: 'file_upload_completed',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToUploadHistory({BuildContext context}) {
+  static void navigateToUploadHistory({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_upload_history'
+      screenRouteName: 'file_upload_history',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToDownload({BuildContext context}) {
+  static void navigateToDownload({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_download'
+      screenRouteName: 'file_download',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToDownloadConfirmation({BuildContext context}) {
+  static void navigateToDownloadConfirmation({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_download_confirmation'
+      screenRouteName: 'file_download_confirmation',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToDownloadCompleted({BuildContext context}) {
+  static void navigateToDownloadCompleted({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_download_completed'
+      screenRouteName: 'file_download_completed',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToDownloadHistory({BuildContext context}) {
+  static void navigateToDownloadHistory({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_download_history'
+      screenRouteName: 'file_download_history',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToHistory({BuildContext context}) {
+  static void navigateToHistory({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'history'
+      screenRouteName: 'history',
+      screenArguments: screenArguments
     );
   }
 
-  static void navigateToFileInformation({BuildContext context}) {
+  static void navigateToFileInformation({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
-      screenRouteName: 'file_information'
+      screenRouteName: 'file_information',
+      screenArguments: screenArguments
     );
   }
 }

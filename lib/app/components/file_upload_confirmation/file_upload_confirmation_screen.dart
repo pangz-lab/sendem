@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sendem/app/base/upload_button.dart';
 import 'package:sendem/app/base/file_upload_setting_form.dart';
 import 'package:sendem/app/common/container_main_view.dart';
-import 'package:sendem/app/components/file_upload_confirmation/file_upload_confirmation_controller.dart';
 
 class FileUploadConfirmationScreen extends StatelessWidget {
   // final FileUploadConfirmationController controller = FileUploadConfirmationController();
