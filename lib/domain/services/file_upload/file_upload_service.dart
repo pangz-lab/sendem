@@ -24,9 +24,12 @@ class FileUploadService implements FileUploadServiceInterface{
     return await _fileUploadRepo.update(id, file);
   }
 
+  Future<dynamic> listenableCollection() async {
+    return _fileUploadRepo.listenableCollection();
+  }
+
   bool pauseUpload(UploadFile file) { return false;}
   bool cancelUpload(UploadFile file) { return false;}
   bool getUploadSize(UploadFile file) { return false;}
   bool getRemainingSize(UploadFile file) { return false;}
-  bool startUpload(UploadFile file) { return false;}
 }

@@ -4,6 +4,14 @@ import 'package:sendem/app/setting/screen_route_collection.dart';
 
 class ScreenNavigatorService {
 
+  static void showSnackbarInText({
+    BuildContext context,
+    String message
+  }) {
+    final snackBar = SnackBar(content: Text(message));
+    Scaffold.of(context).showSnackBar(snackBar);
+  }
+
   static void navigateTo({
     BuildContext context,
     String screenRouteName,
@@ -63,7 +71,7 @@ class ScreenNavigatorService {
     );
   }
 
-  static void navigateToUploadCompeted({BuildContext context, Object screenArguments}) {
+  static void navigateToUploadCompleted({BuildContext context, Object screenArguments}) {
     ScreenNavigatorService.navigateToScreen(
       context: context,
       screenRouteName: 'file_upload_completed',

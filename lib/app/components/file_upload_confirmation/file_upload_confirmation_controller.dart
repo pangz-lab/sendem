@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sendem/app/components/file_upload/file_upload_controller_helper.dart';
 import 'package:sendem/app/provider/app_provider_interface.dart';
@@ -35,16 +36,18 @@ class FileUploadConfirmationController {
     _saveData().then((v) {
       _fileUploadService.uploadToServer(_uploadFile)
       .then((result) {
+        String _today = DateTime.now().toString();
         _uploadFile.status = FileStatus.completed;
         _uploadFile.qrData = result['clearNetDownload'];
         _uploadFile.checksum = result['sha1Checksum'];
         _uploadFile.expiryDate = result['expiryDate'];
         _uploadFile.createdDate = result['creationDate'];
-        _uploadFile.updatedDate = result['creationDate'];
+        _uploadFile.updatedDate = _today;
 
         _fileUploadService.completeUpload(
           _uploadFileId, _uploadFile
         );
+        
       })
       .catchError((e) {
         _uploadFile.status = FileStatus.completed_with_error;
@@ -54,7 +57,7 @@ class FileUploadConfirmationController {
       });
     });
 
-    ScreenNavigatorService.navigateToUploadCompeted(context: context);
+    ScreenNavigatorService.navigateToUploadCompleted(context: context);
   }
 
   Future<void> _saveData() async {
@@ -64,17 +67,19 @@ class FileUploadConfirmationController {
 
   Future<UploadFile> _prepareUpload() async {
     _fileUploadService = FileUploadService(_appProvider);
+    int _fileSize = await _fileUploadProvider.file.length();
+    String _today = DateTime.now().toString();
     _uploadFile = UploadFile();
     _uploadFile.name = displayFile;
-    _uploadFile.size = await _fileUploadProvider.file.length();
+    _uploadFile.size = _fileSize;
     _uploadFile.type = FileType.upload;
     _uploadFile.status = FileStatus.download_inprogress;
     _uploadFile.qrData = "";
     _uploadFile.uri = _fileUploadProvider.file.path;
     _uploadFile.checksum = "";
     _uploadFile.expiryDate = "";
-    _uploadFile.createdDate = "";
-    _uploadFile.updatedDate = "";
+    _uploadFile.createdDate = _today;
+    _uploadFile.updatedDate = _today;
 
     return _uploadFile;
   }

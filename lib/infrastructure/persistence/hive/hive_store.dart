@@ -31,8 +31,16 @@ class HiveDataStore implements PersistentStoreInterface {
     return HiveDataStoreManager(await Hive.openBox(storeName));
   }
 
-  Future<void> connect() async {
-    await Hive.initFlutter();
+  // Future<void> connect() async {
+  //   await Hive.initFlutter();
+  // }
+
+  Future<dynamic> openAsListenableCollection(String storeName) async {
+    if(!Hive.isBoxOpen(storeName)) {
+      Hive.openBox(storeName);
+    }
+    
+    return Hive.box(storeName).listenable();
   }
   
   void close(String storeName) {
@@ -46,7 +54,7 @@ class HiveDataStoreManager implements PersistentStoreDataManagerInterface {
 
   dynamic select(dynamic object) {
     assert(object.runtimeType == PersistentDataParam);
-    return this.box.get(object.shelf);
+    return this.box.get(object.item);
   }
 
   dynamic selectAt(int index) {

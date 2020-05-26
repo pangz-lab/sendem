@@ -29,8 +29,8 @@ class FileUploadRepository implements FileUploadRepositoryInterface {
   }
   
   Future<int> insert(UploadFile file) async {
+    var _data = PersistentDataParam(item: file);
     _storeManager = await _dataRepo.openAndUse(_shelf);
-    var _data = PersistentDataParam( shelf: "", item: file);
     int _id = await _storeManager.insert(_data);
     Hive.close();
 
@@ -38,12 +38,24 @@ class FileUploadRepository implements FileUploadRepositoryInterface {
   }
 
   Future<dynamic> update(int id, UploadFile file) async {
+    var data = PersistentDataParam(item: file);
     _storeManager = await _dataRepo.openAndUse(_shelf);
-    var data = PersistentDataParam( shelf: "", item: file);
     await _storeManager.update(id, data);
     Hive.close();
-    
+
     return true;
+  }
+
+  Future<UploadFile> select(int id) async {
+    _storeManager = await _dataRepo.openAndUse(_shelf);
+    UploadFile _file =  await _storeManager.selectAt(id);
+    Hive.close();
+
+    return _file;
+  }
+
+  Future<dynamic> listenableCollection() {
+    return _dataRepo.openAsListenableCollection(_shelf);
   }
   
   bool delete(UploadFile file) {

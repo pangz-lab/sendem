@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:sendem/infrastructure/repository/data_repository_interface.dart';
 
 class PersistentStoreInterface {
@@ -18,9 +17,10 @@ class PersistentStoreDataManagerInterface implements DataRepositoryInterface {
 }
 
 class PersistentDataParam {
-  //Table
-  String shelf;
-  //Table row
+  dynamic id;
   dynamic item;
-  PersistentDataParam({@required this.shelf, @required this.item});
+  PersistentDataParam({
+    this.item,
+    this.id,
+  });
 }
