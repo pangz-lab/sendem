@@ -6,10 +6,6 @@ import 'package:sendem/infrastructure/persistence/persistence_interface.dart';
 class HiveDataStore implements PersistentStoreInterface {
   dynamic store;
 
-  // HiveDataStore() {
-  //   // this.connect();
-  // }
-
   PersistentStoreDataManagerInterface use(String storeName) {
     return HiveDataStoreManager(Hive.box(storeName));
   }
@@ -53,18 +49,26 @@ class HiveDataStoreManager implements PersistentStoreDataManagerInterface {
     return this.box.get(object.shelf);
   }
 
-  bool insert(dynamic object) {
-    assert(object.runtimeType == PersistentDataParam);
-
-    this.box.put(object.shelf, object.item)
-    .catchError((e) {
-      throw new HiveDataStoreInsertionError();
-    });
-
-    return true;
+  dynamic selectAt(int index) {
+    return this.box.getAt(index);
   }
 
-  bool update(dynamic data) { return false;}
+  Future<int> insert(dynamic object) async {
+    assert(object.runtimeType == PersistentDataParam);
+    return await this.box.add(object.item)
+    .catchError((e) {
+      throw new HiveDataStoreInsertError();
+    });
+  }
+
+  Future<dynamic> update(int id, dynamic object) async {
+    assert(object.runtimeType == PersistentDataParam);
+    return await this.box.put(id, object.item)
+    .catchError((e) {
+      throw new HiveDataStoreUpdateError();
+    });
+  }
+
   bool updateByType(int id, dynamic data) { return false;}
   bool delete(dynamic data) { return false;}
   int count() { return 0;}
@@ -72,4 +76,5 @@ class HiveDataStoreManager implements PersistentStoreDataManagerInterface {
 }
 
 class HiveDataStoreException extends IOException {}
-class HiveDataStoreInsertionError extends Error {}
+class HiveDataStoreInsertError extends Error {}
+class HiveDataStoreUpdateError extends Error {}

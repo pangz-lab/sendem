@@ -9,8 +9,8 @@ class PersistentStoreInterface {
 
 class PersistentStoreDataManagerInterface implements DataRepositoryInterface {
   dynamic select(dynamic data) { return false;}
-  bool insert(dynamic data) { return false;}
-  bool update(dynamic data) { return false;}
+  Future<int> insert(dynamic object) async { return Future.value(0);}
+  Future<dynamic> update(int id, dynamic data) async { return Future.value(0);}
   bool updateByType(int id, dynamic data) { return false;}
   bool delete(dynamic data) { return false;}
   int count() { return 0;}
@@ -21,6 +21,6 @@ class PersistentDataParam {
   //Table
   String shelf;
   //Table row
-  String item;
+  dynamic item;
   PersistentDataParam({@required this.shelf, @required this.item});
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sendem/app/base/next_button.dart';
 import 'package:sendem/app/base/file_drop_area.dart';
 import 'package:sendem/app/common/container_main_view.dart';
 import 'package:sendem/app/components/file_upload/file_upload_controller.dart';
+import 'package:sendem/app/provider/data_presistence_provider.dart';
 
 class FileUploadScreen extends StatelessWidget {
   final FileUploadController controller = FileUploadController();
@@ -10,7 +12,8 @@ class FileUploadScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.setContext(context);
+    var _dataProvider = Provider.of<DataPersistenceProvider>(context, listen: false).getInstance("ScreenDataProvider");
+    
     return ContainerMainView(
         child: Container(
           padding: const EdgeInsets.all(30.0),
@@ -39,7 +42,10 @@ class FileUploadScreen extends StatelessWidget {
               // _controller.nextButton,
               NextButton(
                 onPressed: () {
-                  controller.goNext();
+                  _dataProvider["fileUploadScreen"].setFile(
+                    controller.fileDropAreaController.getFile()
+                  );
+                  controller.goNext(context);
                 },
               ),
               Spacer(flex: 1)

@@ -1,31 +1,32 @@
 import 'package:sendem/app/provider/app_provider_interface.dart';
-import 'package:sendem/domain/models/file.dart';
-import 'package:sendem/domain/repository/file_repository/file_repository.dart';
-import 'package:sendem/domain/repository/file_repository/file_repository_interface.dart';
+import 'package:sendem/domain/models/upload_file.dart';
 import 'package:sendem/domain/repository/file_upload_repository/file_upload_repository.dart';
 import 'package:sendem/domain/repository/file_upload_repository/file_upload_repository_interface.dart';
 import 'package:sendem/domain/services/file_upload/file_upload_service_interface.dart';
 
 class FileUploadService implements FileUploadServiceInterface{
   AppProviderInterface provider;
-  FileUploadRepositoryInterface fileUploadRepo;
-  FileRepositoryInterface fileRepo;
+  FileUploadRepositoryInterface _fileUploadRepo;
 
-  FileUploadService(this.provider);
-
-  bool startUpload(File file) {
-    //Todo
-    //1. Create HIVE data repository
-    //2. Create OSHI API repository
-    this.fileRepo = FileRepository(this.provider);
-    this.fileUploadRepo = FileUploadRepository(this.provider);
-    this.fileRepo.insert(file);
-    return this.fileUploadRepo.upload(file);
+  FileUploadService(this.provider) {
+    _fileUploadRepo = FileUploadRepository(this.provider);
   }
 
-  bool pauseUpload(File file) { return false;}
-  bool completeUpload(File file) { return false;}
-  bool cancelUpload(File file) { return false;}
-  bool getUploadSize(File file) { return false;}
-  bool getRemainingSize(File file) { return false;}
+  Future<dynamic> uploadToServer(UploadFile file) async {
+    return await _fileUploadRepo.uploadToServer(file);
+  }
+
+  Future<int> saveUpload(UploadFile file) async {
+    return await _fileUploadRepo.insert(file);
+  }
+
+  Future<bool> completeUpload(int id, UploadFile file) async {
+    return await _fileUploadRepo.update(id, file);
+  }
+
+  bool pauseUpload(UploadFile file) { return false;}
+  bool cancelUpload(UploadFile file) { return false;}
+  bool getUploadSize(UploadFile file) { return false;}
+  bool getRemainingSize(UploadFile file) { return false;}
+  bool startUpload(UploadFile file) { return false;}
 }

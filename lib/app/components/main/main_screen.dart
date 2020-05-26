@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sendem/app/provider/data_presistence_provider.dart';
 import 'package:sendem/app/setting/screen_route_collection.dart';
+import 'package:sendem/domain/models/file_status.dart';
+import 'package:sendem/domain/models/file_type.dart';
+import 'package:sendem/domain/models/upload_file.dart';
 import 'package:sendem/infrastructure/persistence/persistence_interface.dart';
 import 'package:sendem/infrastructure/api/api_interface.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,10 +38,23 @@ class _MainScreenState extends State<MainScreen> {
     // var store = dpProvider.getInstance("HiveDataStore");
     // var oshiRest = dpProvider.getInstance("OshiRestApi");
 
-    // store.openAndUse("sendemStore").then((dbm) {
-    //   dynamic d = PersistentDataParam( shelf: "shelf1", item: "Shelfvalue1");
+    // store.openAndUse("UploadFile").then((dbm) {
+    // var _uploadFile = UploadFile();
+    // _uploadFile.name = "test1";
+    // _uploadFile.size = 12;
+    // _uploadFile.type = FileType.upload;
+    // _uploadFile.status = FileStatus.download_inprogress;
+    // _uploadFile.qrData = "";
+    // _uploadFile.uri = "/usr/local/rms";
+    // _uploadFile.checksum = "";
+    // _uploadFile.expiryDate = "";
+    // _uploadFile.createdDate = "";
+    // _uploadFile.updatedDate = "";
+
+    //   dynamic d = PersistentDataParam( shelf: "shelf1", item: _uploadFile);
     //   dbm.insert(d);
-    //   print(dbm.select(d));
+    //   var rr = dbm.selectAt(0);
+    //   print(rr.name);
     // });
 
     // oshiRest.uploadFile(

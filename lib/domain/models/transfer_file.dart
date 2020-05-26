@@ -1,9 +1,9 @@
 import 'package:sendem/domain/models/file_status.dart';
 import 'package:sendem/domain/models/file_type.dart';
 
-class File {
+class TransferFile {
   String name;
-  double size;
+  int size;
   FileType type;
   FileStatus status;
   String qrData;
@@ -12,4 +12,16 @@ class File {
   String expiryDate;
   String createdDate;
   String updatedDate;
+  TransferFile({
+    this.name,
+    this.size,
+    this.type,
+    this.status,
+    this.qrData,
+    this.uri,
+    this.checksum,
+    this.expiryDate,
+    this.createdDate,
+    this.updatedDate
+  });
 }

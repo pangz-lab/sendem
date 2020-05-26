@@ -11,7 +11,9 @@ implements FileDropAreaControllerInterface {
   void afterFileSelected(Widget containerWidget, File selectedFile) {
     this.file = selectedFile;
   }
-  
+
+  File getFile() => file;
+
   Widget containerAfterSelection(File file) {
     String fullPath = file.path.toString();
     String fileName = "";
@@ -37,14 +39,18 @@ implements FileDropAreaControllerInterface {
   }
 }
 
-// class NextButtonController 
-// extends ScreenController 
-// implements NextButtonControllerInterface {
-//   void onPressed() {
-//     ScreenNavigatorService.navigateToUploadConfirmation(context: this.context);
-//   }
-// }
+class FileUploadProvider {
+  File _activeFile;
+  Map<String, dynamic> _fileInfo;
 
-class FileUploadEvents {
-  
+  File get file => _activeFile;
+  Map<String, dynamic> get fileInfo => _fileInfo;
+
+  void setFile(File file) {
+    _activeFile = file;
+  }
+
+  void setFileInfo(Map<String, dynamic> info) {
+    _fileInfo = info;
+  }
 }

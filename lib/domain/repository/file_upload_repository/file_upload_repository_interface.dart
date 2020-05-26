@@ -1,5 +1,10 @@
-import 'package:sendem/domain/models/file.dart';
+import 'package:sendem/domain/models/upload_file.dart';
 
 class FileUploadRepositoryInterface {
-  bool upload(File file) { return false;}
+  Future<dynamic> uploadToServer(UploadFile file) { return Future.value(false);}
+  Future<int> insert(UploadFile file) {return Future.value(0);}
+  Future<dynamic> update(int id, UploadFile file) {return Future.value(0);}
+  bool delete(UploadFile file) { return false;}
+  int count() { return 0;}
+  int countBy(dynamic condition) { return 0;}
 }

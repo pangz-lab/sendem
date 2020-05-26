@@ -1,5 +1,5 @@
-import 'package:sendem/domain/models/file.dart';
+import 'package:sendem/domain/models/transfer_file.dart';
 
 class FileDownloadRepositoryInterface {
-  bool insert(File file) { return false;}
+  bool insert(TransferFile file) { return false;}
 }
