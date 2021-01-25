@@ -16,6 +16,7 @@ void main() async {
   Hive.registerAdapter(UploadFileAdapter());
   Hive.registerAdapter(FileStatusAdapter());
   Hive.registerAdapter(FileTypeAdapter());
+  Hive.openBox<UploadFile>("UploadFile");
   
   // await Hive.initFlutter();
   // var db = HiveDataStore();

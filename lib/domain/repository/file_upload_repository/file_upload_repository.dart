@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:sendem/app/provider/app_provider_interface.dart';
 import 'package:sendem/domain/models/upload_file.dart';
@@ -17,7 +18,14 @@ class FileUploadRepository implements FileUploadRepositoryInterface {
   FileUploadRepository(this.provider) {
     _dataRepo = this.provider.getInstance("HiveDataStore");
     _oshiRestApi = this.provider.getInstance("OshiRestApi");
-    
+  }
+
+  Future<dynamic> openStorage() async {
+    return await _dataRepo.openAndUse(_shelf);
+  }
+
+  void closeStorage() {
+    Hive.close();
   }
 
   Future<dynamic> uploadToServer(UploadFile file) async {
@@ -54,7 +62,7 @@ class FileUploadRepository implements FileUploadRepositoryInterface {
     return _file;
   }
 
-  Future<dynamic> listenableCollection() {
+  ValueListenable<dynamic> listenableCollection() {
     return _dataRepo.openAsListenableCollection(_shelf);
   }
   
@@ -62,7 +70,6 @@ class FileUploadRepository implements FileUploadRepositoryInterface {
     return false;
     // return _dataRepo.delete(file);
   }
-
 
   int count() {
     return 0;

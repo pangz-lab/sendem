@@ -13,6 +13,7 @@ import 'package:sendem/app/components/file_download_confirmation/file_download_c
 import 'package:sendem/app/components/file_download_completed/file_download_completed_screen.dart';
 import 'package:sendem/app/components/file_download_history/file_download_history_screen.dart';
 import 'package:sendem/app/components/history/history_screen.dart';
+import 'package:sendem/app/components/loading/loading_screen.dart';
 
 class ScreenRouteCollection {
 
@@ -30,6 +31,7 @@ class ScreenRouteCollection {
     "file_download_completed" : FileDownloadCompletedScreen(),
     "file_download_history" : FileDownloadHistoryScreen(),
     "file_information" : FileInformationScreen(),
+    "loading" : LoadingScreen(),
   };
 
   static const Map<String, String> ROUTE_NAME = {
@@ -46,6 +48,7 @@ class ScreenRouteCollection {
     "file_download_completed" : "/download_completed",
     "file_download_history" : "/download_history",
     "file_information" : "/file_information",
+    "loading" : "/loading",
   };
 
   static List<Widget> mainScreen = <Widget>[
@@ -78,6 +81,7 @@ class ScreenRouteCollection {
       ROUTE_NAME['file_download_completed']: (BuildContext context) => screenCollection['file_download_completed'],
       ROUTE_NAME['file_download_history']: (BuildContext context) => screenCollection['file_download_history'],
       ROUTE_NAME['file_information']: (BuildContext context) => screenCollection['file_information'],
+      ROUTE_NAME['loading']: (BuildContext context) => screenCollection['loading'],
     };
   }
 }

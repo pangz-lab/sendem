@@ -1,9 +1,9 @@
 import 'package:sendem/infrastructure/repository/data_repository_interface.dart';
 
 class PersistentStoreInterface {
-  PersistentStoreDataManagerInterface use(String storeName) { return null;}
-  PersistentStoreDataManagerInterface reset(String storeName) { return null;}
-  bool delete(String storeName) { return null;}
+  Future<void> connect() {}
+  void close() {}
+  void delete() {}
 }
 
 class PersistentStoreDataManagerInterface implements DataRepositoryInterface {
@@ -19,8 +19,14 @@ class PersistentStoreDataManagerInterface implements DataRepositoryInterface {
 class PersistentDataParam {
   dynamic id;
   dynamic item;
+  dynamic table;
+  List<String, dynamic> columnValues;
+  List<String, String> columns;
   PersistentDataParam({
     this.item,
     this.id,
+    this.table,
+    this.columns,
+    this.columnValues,
   });
 }

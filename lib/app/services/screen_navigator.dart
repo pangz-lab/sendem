@@ -134,4 +134,12 @@ class ScreenNavigatorService {
       screenArguments: screenArguments
     );
   }
+
+  static void navigateToLoading({BuildContext context, Object screenArguments}) {
+    ScreenNavigatorService.navigateToScreen(
+      context: context,
+      screenRouteName: 'loading',
+      screenArguments: screenArguments
+    );
+  }
 }

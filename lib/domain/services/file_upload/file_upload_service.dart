@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:sendem/app/provider/app_provider_interface.dart';
 import 'package:sendem/domain/models/upload_file.dart';
 import 'package:sendem/domain/repository/file_upload_repository/file_upload_repository.dart';
@@ -12,6 +13,14 @@ class FileUploadService implements FileUploadServiceInterface{
     _fileUploadRepo = FileUploadRepository(this.provider);
   }
 
+  Future<dynamic> openStorage() {
+    return _fileUploadRepo.openStorage();
+  }
+
+  void closeStorage() {
+    _fileUploadRepo.closeStorage();
+  }
+
   Future<dynamic> uploadToServer(UploadFile file) async {
     return await _fileUploadRepo.uploadToServer(file);
   }
@@ -23,8 +32,8 @@ class FileUploadService implements FileUploadServiceInterface{
   Future<bool> completeUpload(int id, UploadFile file) async {
     return await _fileUploadRepo.update(id, file);
   }
-
-  Future<dynamic> listenableCollection() async {
+  
+  ValueListenable<dynamic> listenableCollection() {
     return _fileUploadRepo.listenableCollection();
   }
 

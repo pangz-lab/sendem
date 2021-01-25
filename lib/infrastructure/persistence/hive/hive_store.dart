@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sendem/infrastructure/persistence/persistence_interface.dart';
@@ -35,11 +36,7 @@ class HiveDataStore implements PersistentStoreInterface {
   //   await Hive.initFlutter();
   // }
 
-  Future<dynamic> openAsListenableCollection(String storeName) async {
-    if(!Hive.isBoxOpen(storeName)) {
-      Hive.openBox(storeName);
-    }
-    
+  ValueListenable<dynamic> openAsListenableCollection(String storeName) {
     return Hive.box(storeName).listenable();
   }
   
